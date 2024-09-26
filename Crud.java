@@ -1,9 +1,7 @@
 import java.util.Scanner;
-
-public class Main {
+public class CRUD {
     public static String[] todos = new String[10];
     public static Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
         System.out.println("Before delete");
         addTodoList("Membaca");
@@ -15,7 +13,6 @@ public class Main {
         showTodoList();
         showMainMenu();
     }
-
     public static void showTodoList() {
         System.out.println("TODO LIST");
         for (int i = 0; i < todos.length; i++) {
@@ -25,10 +22,8 @@ public class Main {
             }
         }
     }
-
     public static void addTodoList(String todo) {
         resizeArrayIfFull();
-
         for (int i = 0; i < todos.length; i++) {
             if (todos[i] == null) {
                 todos[i] = todo;
@@ -36,15 +31,12 @@ public class Main {
             }
         }
     }
-
     private static void resizeArrayIfFull() {
         boolean isFull = isArrayFull();
-
         if (isFull) {
             resizeArrayToTwoTimesBigger();
         }
     }
-
     private static void resizeArrayToTwoTimesBigger() {
         String[] temp = todos;
         todos = new String[todos.length * 2];
@@ -52,7 +44,6 @@ public class Main {
             todos[i] = temp[i];
         }
     }
-
     private static boolean isArrayFull() {
         boolean isFull = true;
         for (int i = 0; i < todos.length; i++) {
@@ -63,10 +54,8 @@ public class Main {
         }
         return isFull;
     }
-
     public static boolean removeTodoList(Integer number) {
         if (isSelectedTodoNotValid(number)) return false;
-
         for (int i = 0; i < todos.length; i++) {
             // if todo is the last element
             if (i == (todos.length - 1)) {
@@ -78,22 +67,18 @@ public class Main {
         }
         return true;
     }
-
     private static boolean isSelectedTodoNotValid(Integer number) {
         if (number <= 0) {
             return true;
         }
-
         if (number - 1 > todos.length - 1) {
             return true;
         }
-
         if (todos[number - 1] == null) {
             return true;
         }
         return false;
     }
-
     public static boolean editTodoList(Integer number, String newTodo) {
         if (isSelectedTodoNotValid(number)) {
             return false;
@@ -101,7 +86,6 @@ public class Main {
         todos[number - 1] = newTodo;
         return true;
     }
-
     public static void showMainMenu() {
         boolean isRunning = true;
         while (isRunning) {
@@ -135,5 +119,4 @@ public class Main {
             }
         }
     }
-
 }
