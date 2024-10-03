@@ -136,4 +136,49 @@ public class Main {
         }
     }
 
+    public static String input(String info) {
+        System.out.println(info + " : ");
+        String data = scanner.nextLine();
+        return data;
+    }
+
+    public static void showMenuAddTodoList() {
+        System.out.println("MENAMBAH TODO LIST");
+        String todo = input( info "Todo (x jika batal");
+        if (todo.equals("x")) {
+            // batal
+        } else {
+            addTodoList(todo);
+        }
+    }
+
+    public static void showMenuRemoveTodoList() {
+        System.out.println("MENGHAPUS TODO LIST");
+        String todoYangDipilih = input( info: "Nomor todo yang dihapus (x jika batal");
+        //batal
+    } else {
+        boolean success = removeTodoList( number: Integer.valueOf( + todoYangDipilih));
+        if (!success) {
+            System.out.println("Gagal menghapus todo list : " + todoYangDipilih);
+        }
+    }
+}
+
+public static void showMenuEditTodoList() {
+    System.out.println("MENGEDIT TODO LIST");
+    String selectedTodo = input(  "Masukkan nomor todo (x jika batal");
+    if (selectedTodo.equals("x")) {
+        return;
+    }
+    String newTodo = input( "Masukkan todo yang baru (x jika batal");
+    if (newTodo.equals("x")) {
+        return;
+    }
+    boolean isEditTodoSuccess = editTodoList( number Integer.valueOf( selectedTodo). newTodo);
+    if (isEditTodoSuccess) {
+        System.out.println("Berhasil mengedit Todo");
+    } else {
+        System.out.println("Gagal mengedit todo");
+    }
+
 }
